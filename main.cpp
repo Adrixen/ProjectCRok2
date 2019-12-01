@@ -225,6 +225,29 @@ int main()
 			{
 				window.close();
 			}
+			window.draw(sprite);
+
+			for (int a = 0; a < 9; a++)
+			{
+				for (int i = 0; i < 17; i++)
+				{
+					if (tab[a][i].kolor == 1)
+					{
+						CircleShape kulka(30);
+						kulka.setPosition(Vector2f(tab[a][i].posxs + 4, tab[a][i].posys + 4));
+						kulka.setFillColor(Color(255, 255, 255));
+						window.draw(kulka);
+					}
+					if (tab[a][i].kolor == 2)
+					{
+						CircleShape kulka(30);
+						kulka.setPosition(Vector2f(tab[a][i].posxs + 4, tab[a][i].posys + 4));
+						kulka.setFillColor(Color(0, 0, 0));
+						window.draw(kulka);
+					}
+				}
+			}
+
 			if (event.type == sf::Event::MouseButtonPressed)
 			{
 				if (event.mouseButton.button == sf::Mouse::Left)
@@ -236,12 +259,6 @@ int main()
 						{
 							if (tab[a][i].kolor != 3)
 							{
-								if (tab[a][i].kolor == 1)
-								{
-									CircleShape kulka(25);
-									kulka.setPosition(Vector2f(tab[a][i].posxs, tab[a][i].posys));
-									window.draw(kulka);
-								}
 								if (tab[a][i].posys<event.mouseButton.y && tab[a][i].posyk>event.mouseButton.y&&
 									tab[a][i].posxs< event.mouseButton.x && tab[a][i].posxk> event.mouseButton.x)
 								{
@@ -269,8 +286,8 @@ int main()
 			//	std::cout << "new mouse y: " << event.mouseMove.y << std::endl;
 			//}
 
-			window.clear();
-			window.draw(sprite);
+			//window.clear();
+
 
 			//for (std::vector<CircleShape>::iterator it = koleczka.begin(); it != koleczka.end();it++)
 			//	window.draw(*it);
